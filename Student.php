@@ -12,7 +12,8 @@
  * @author Lucas
  */
 class Student {
-    //put your code here
+    
+    #Constructor
     function __construct() {
         $this->surname = '';
         $this->first_name = '';
@@ -20,26 +21,32 @@ class Student {
         $this->grades = array();
     }
     
+    #Add Email
     function add_email($which,$address) {
         $this->emails[$which] = $address;
     }
-
+    
+    #Add Grade
     function add_grade($grade) {
         $this->grades[] = $grade;
     }
     
+    #Average all grades
     function average() {
         $total = 0;
-        foreach ($this->grades as $value)
+        foreach ($this->grades as $value){
             $total += $value;
+        }
         return $total / count($this->grades);
     }
     
+    #Formatting for output
     function toString() {
         $result = $this->first_name . ' ' . $this->surname;
         $result .= ' ('.$this->average().")\n";
-        foreach($this->emails as $which=>$what)
+        foreach($this->emails as $which=>$what){
             $result .= $which . ': '. $what. "\n";
+        }
         $result .= "\n";
         return '<pre>'.$result.'</pre>';
     }
